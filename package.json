@@ -1,4 +1,8 @@
 {
   "name": "@davidahouse/lincoln-api",
-  "version": "0.1.0"
+  "version": "0.1.1",
+  "description": "An API for accessing Lincoln file contents",
+  "license": "MIT",
+  "repository": "davidahouse/lincoln-api",
+  "main": "index.js"
 }
