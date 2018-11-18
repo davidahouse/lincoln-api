@@ -1,10 +1,12 @@
 const fs = require('fs')
+const homedir = require('os').homedir()
+const moment = require('moment')
 
 class LincolnVault {
   constructor(vault) {
     let self = this
     this.vault = vault
-    var contents = fs.readFileSync("/Users/E136586/Library/Application\ Support/com.repairward.lincoln/vaults/" + vault + ".vaultConfig")
+    var contents = fs.readFileSync(homedir + "/Library/Application\ Support/com.repairward.lincoln/vaults/" + vault + ".vaultConfig")
     this.config = JSON.parse(contents)
 
     this.contents = function(container) {
@@ -18,14 +20,19 @@ class LincolnVault {
 
     this.pathFor = function(container) {
 
-      if (container == "Today") {
-        return this.config.rootFolder + "/__journal/"
-      } else if (container == "Glance") {
+      if (container.toLowerCase() == "today") {
+        var today = moment(new Date())
+        return this.config.rootFolder + "/__journal/" + today.format("MMM_YYYY") + "/" + today.format("MMM_DD_YYYY") + "/"
+      } else if (container.toLowerCase() == "glance") {
         return this.config.rootFolder + "/__glance/"
-      } else if (container == "Frequent") {
+      } else if (container.toLowerCase() == "frequent") {
         return this.config.rootFolder + "/__frequent/"
-      } else if (container == "Root") {
-        return this.config.rootFolder + "/__content/"
+      } else if (container.toLowerCase().startsWith("content")) {
+        return this.config.rootFolder + "/__" + container.toLowerCase() + "/"
+      } else if (container.toLowerCase().startsWith("journal")) {
+        var parts = container.split('/')
+        var journal = moment(parts[1])
+        return this.config.rootFolder + "/__journal/" + journal.format("MMM_YYYY") + "/" + journal.format("MMM_DD_YYYY") + "/"
       } else {
         return this.config.rootFolder
       }

@@ -1,8 +1,18 @@
 {
   "name": "@davidahouse/lincoln-api",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "An API for accessing Lincoln file contents",
   "license": "MIT",
   "repository": "davidahouse/lincoln-api",
-  "main": "index.js"
+  "main": "index.js",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "moment": "^2.22.2"
+  }
 }
