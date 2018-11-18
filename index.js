@@ -30,6 +30,11 @@ class LincolnVault {
         return this.config.rootFolder
       }
     }
+
+    this.newDocument = function(container, title, contents) {
+      var path = this.pathFor(container) + "/"+ title + ".md"
+      fs.writeFileSync(path, contents)
+    }
   }
 }
 

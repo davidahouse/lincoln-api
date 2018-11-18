@@ -1,6 +1,6 @@
 {
   "name": "@davidahouse/lincoln-api",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "An API for accessing Lincoln file contents",
   "license": "MIT",
   "repository": "davidahouse/lincoln-api",
