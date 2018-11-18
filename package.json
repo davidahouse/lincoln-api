@@ -1,18 +1,51 @@
 {
   "name": "@davidahouse/lincoln-api",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "An API for accessing Lincoln file contents",
   "license": "MIT",
   "repository": "davidahouse/lincoln-api",
   "main": "index.js",
   "devDependencies": {
     "chai": "^4.2.0",
+    "eslint": "^5.9.0",
+    "eslint-config-google": "^0.11.0",
     "mocha": "^5.2.0"
   },
   "scripts": {
+    "lint": "eslint $(find . -name \"*.js\" -not -path \"./node_modules/*\" -not -path \"./public/*\")",
+    "lint-fix": "eslint --fix $(find . -name \"*.js\" -not -path \"./node_modules/*\" -not -path \"./public/*\")",
     "test": "mocha"
   },
   "dependencies": {
     "moment": "^2.22.2"
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "es6": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "google"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "ecmaFeatures": {
+        "impliedStrict": true
+      },
+      "sourceType": "module"
+    },
+    "rules": {
+      "max-len": [
+        "error",
+        {
+          "code": 120
+        }
+      ],
+      "semi": [
+        "error",
+        "never"
+      ]
+    }
   }
 }
