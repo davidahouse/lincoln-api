@@ -8,6 +8,17 @@ describe('lincoln', function() {
     expect(vault.vault).to.be.equal('test')
   })
 
+  describe('allVaults', function() {
+    it('should return the configured vaults', function() {
+      // TODO: Sketchy test here until we can mock the fs module
+      const vault = new LincolnVault('test')
+      vault.config = {rootFolder: '/root'}
+      vault.allVaults(function(err, allVaults) {
+        expect(allVaults.length).to.be.greaterThan(0)
+      })
+    })
+  })
+
   describe('pathFor', function() {
     it('should return correct paths', function() {
       const vault = new LincolnVault('test')

@@ -1,6 +1,7 @@
 const fs = require('fs')
 const homedir = require('os').homedir()
 const moment = require('moment')
+const path = require('path')
 
 /**
 * This class implements an interface to a Lincoln vault, which is the
@@ -12,15 +13,22 @@ class LincolnVault {
   * @param {string} vault The name of the vault
   */
   constructor(vault) {
+    const self = this
     this.vault = vault
-    const vaultConfigPath = homedir + '/Library/Application Support/com.repairward.lincoln/vaults/'
-    const contents = fs.readFileSync( vaultConfigPath + vault + '.vaultConfig')
-    this.config = JSON.parse(contents)
+    this.vaultConfigPath = homedir + '/Library/Application Support/com.repairward.lincoln/vaults/'
+    if (fs.existsSync(this.vaultConfigPath + vault + '.vaultConfig')) {
+      const contents = fs.readFileSync(this.vaultConfigPath + vault + '.vaultConfig')
+      this.config = JSON.parse(contents)
+    } else {
+      this.config = {}
+    }
 
-    this.contents = function(container) {
-      fs.readdir(this.pathFor(container), function(err, items) {
-        return items
-      })
+    this.allVaults = function(callback) {
+      fs.readdir(self.vaultConfigPath, callback)
+    }
+
+    this.contents = function(container, callback) {
+      fs.readdir(this.pathFor(container), callback)
     }
 
     this.pathFor = function(container) {
@@ -49,6 +57,11 @@ class LincolnVault {
     this.newDocument = function(container, title, contents) {
       const path = this.pathFor(container) + '/'+ title + '.md'
       fs.writeFileSync(path, contents)
+    }
+
+    this.importFile = function(container, importPath) {
+      const containerPath = this.pathFor(container)
+      fs.copyFileSync(importPath, containerPath + '/' + path.basename(importPath))
     }
   }
 }
