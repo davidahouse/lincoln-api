@@ -37,10 +37,14 @@ class LincolnVault {
         const monthFolder = today.format('MMM_YYYY')
         const dayFolder = today.format('MMM_DD_YYYY')
         return this.config.rootFolder + '/__journal/' + monthFolder + '/' + dayFolder + '/'
+      } else if (container.toLowerCase() == 'inbox') {
+        return this.config.rootFolder + '/__inbox/'
       } else if (container.toLowerCase() == 'glance') {
         return this.config.rootFolder + '/__glance/'
       } else if (container.toLowerCase() == 'frequent') {
         return this.config.rootFolder + '/__frequent/'
+      } else if (container.toLowerCase() == 'todo') {
+        return this.config.rootFolder + '/__todo/'
       } else if (container.toLowerCase().startsWith('content')) {
         return this.config.rootFolder + '/__' + container.toLowerCase() + '/'
       } else if (container.toLowerCase().startsWith('journal')) {

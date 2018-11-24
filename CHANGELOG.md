@@ -1,5 +1,9 @@
 ## lincoln-api
 
+## 0.4.1
+
+- Added inbox and todo to path options
+
 ## 0.4.0
 
 - Added new method `newFile` when you want to specify the filename
