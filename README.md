@@ -64,3 +64,11 @@ Importing files into Lincoln can be done with the `importFile` method:
 ```
 vault.importFile("Glance", "~/Desktop/everythingisfine.png")
 ```
+
+You can also create a new file using the `newFile` method:
+
+```
+vault.newFile("Glance", "mydoc.txt", "## The markdown contents go here")
+```
+
+The main difference between `newFile` and `newDocument` is that `newFile` lets you specify the full file name, whereas `newDocument` assumes you are creating a markdown document and provides the `.md` file extension for you.

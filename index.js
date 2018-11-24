@@ -59,6 +59,11 @@ class LincolnVault {
       fs.writeFileSync(path, contents)
     }
 
+    this.newFile = function(container, filename, contents) {
+      const path = this.pathFor(container) + '/'+ filename
+      fs.writeFileSync(path, contents)
+    }
+
     this.importFile = function(container, importPath) {
       const containerPath = this.pathFor(container)
       fs.copyFileSync(importPath, containerPath + '/' + path.basename(importPath))
