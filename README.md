@@ -39,11 +39,11 @@ The container names are as follows:
 
 | Container | Description |
 |-----------|-------------|
+| Inbox    | The inbox folder |
 | Today     | The journal folder that points to today's date |
 | Journal/YYYY-MM-DD | The journal folder for a specific date |
-| Glance    | The glance container |
-| Frequent  | The frequent container |
 | Content/optional_folder_path | A content container. The folder path represents the folders under the main content root, but is optional |
+| <other> | Any other path is assumed to be a virtual folder |
 
 You can create a new markdown document using the `newDocument` method:
 
@@ -62,13 +62,13 @@ vault.contents("Today", function(err, items) {
 Importing files into Lincoln can be done with the `importFile` method:
 
 ```
-vault.importFile("Glance", "~/Desktop/everythingisfine.png")
+vault.importFile("Inbox", "~/Desktop/everythingisfine.png")
 ```
 
 You can also create a new file using the `newFile` method:
 
 ```
-vault.newFile("Glance", "mydoc.txt", "## The markdown contents go here")
+vault.newFile("Inbox", "mydoc.txt", "## The markdown contents go here")
 ```
 
 The main difference between `newFile` and `newDocument` is that `newFile` lets you specify the full file name, whereas `newDocument` assumes you are creating a markdown document and provides the `.md` file extension for you.

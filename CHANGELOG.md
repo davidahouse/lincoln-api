@@ -1,5 +1,10 @@
 ## lincoln-api
 
+## 0.5.0
+
+- Removed containers that are no longer top level containers: glance, todo, frequent
+- Added support for virtual folders
+
 ## 0.4.1
 
 - Added inbox and todo to path options

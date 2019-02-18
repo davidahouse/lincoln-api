@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 const expect = require('chai').expect
 const LincolnVault = require('../index.js')
+const moment = require('moment')
 
 describe('lincoln', function() {
   it('should retain vault after construction', function() {
@@ -24,13 +25,17 @@ describe('lincoln', function() {
       const vault = new LincolnVault('test')
       vault.config = {rootFolder: '/root'}
 
+      const today = moment(new Date())
+      const monthFolder = today.format('MMM_YYYY')
+      const dayFolder = today.format('MMM_DD_YYYY')
+
       const expectations = [
-        {'container': 'Today', 'result': '/root/__journal/Nov_2018/Nov_18_2018/'},
-        {'container': 'Glance', 'result': '/root/__glance/'},
-        {'container': 'Frequent', 'result': '/root/__frequent/'},
+        {'container': 'Today', 'result': '/root/__journal/' + monthFolder + '/' + dayFolder + '/'},
+        {'container': 'Inbox', 'result': '/root/__inbox/'},
         {'container': 'Content', 'result': '/root/__content/'},
         {'container': 'Content/projects', 'result': '/root/__content/projects/'},
         {'container': 'Journal/2018-11-16', 'result': '/root/__journal/Nov_2018/Nov_16_2018/'},
+        {'container': 'Todo', 'result': '/root/__virtual/Todo'},
       ]
 
       for (let i = 0; i < expectations.length; i++) {
