@@ -30,12 +30,12 @@ describe('lincoln', function() {
       const dayFolder = today.format('MMM_DD_YYYY')
 
       const expectations = [
-        {'container': 'Today', 'result': '/root/__journal/' + monthFolder + '/' + dayFolder + '/'},
-        {'container': 'Inbox', 'result': '/root/__inbox/'},
-        {'container': 'Content', 'result': '/root/__content/'},
-        {'container': 'Content/projects', 'result': '/root/__content/projects/'},
-        {'container': 'Journal/2018-11-16', 'result': '/root/__journal/Nov_2018/Nov_16_2018/'},
-        {'container': 'Todo', 'result': '/root/__virtual/Todo'},
+        {'container': 'Today', 'result': '/root/Journal/' + monthFolder + '/' + dayFolder + '/'},
+        {'container': 'Inbox', 'result': '/root/Inbox/'},
+        {'container': 'Content', 'result': '/root/Content/'},
+        {'container': 'Content/projects', 'result': '/root/Content/projects/'},
+        {'container': 'Journal/2018-11-16', 'result': '/root/Journal/Nov_2018/Nov_16_2018/'},
+        {'container': 'Todo', 'result': '/root/Virtual/Todo'},
       ]
 
       for (let i = 0; i < expectations.length; i++) {

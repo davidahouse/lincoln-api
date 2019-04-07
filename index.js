@@ -36,19 +36,19 @@ class LincolnVault {
         const today = moment(new Date())
         const monthFolder = today.format('MMM_YYYY')
         const dayFolder = today.format('MMM_DD_YYYY')
-        return this.config.rootFolder + '/__journal/' + monthFolder + '/' + dayFolder + '/'
+        return this.config.rootFolder + '/Journal/' + monthFolder + '/' + dayFolder + '/'
       } else if (container.toLowerCase() == 'inbox') {
-        return this.config.rootFolder + '/__inbox/'
+        return this.config.rootFolder + '/Inbox/'
       } else if (container.toLowerCase().startsWith('content')) {
-        return this.config.rootFolder + '/__' + container.toLowerCase() + '/'
+        return this.config.rootFolder + '/' + container + '/'
       } else if (container.toLowerCase().startsWith('journal')) {
         const parts = container.split('/')
         const journal = moment(parts[1])
         const monthFolder = journal.format('MMM_YYYY')
         const dayFolder = journal.format('MMM_DD_YYYY')
-        return this.config.rootFolder + '/__journal/' + monthFolder + '/' + dayFolder + '/'
+        return this.config.rootFolder + '/Journal/' + monthFolder + '/' + dayFolder + '/'
       } else {
-        return this.config.rootFolder + '/__virtual/' + container
+        return this.config.rootFolder + '/Virtual/' + container
       }
     }
 

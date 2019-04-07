@@ -1,5 +1,9 @@
 ## lincoln-api
 
+## 0.6.0
+
+- Changed root paths to match Lincoln 0.8.0. Basically removing the __ prefix from the paths
+
 ## 0.5.0
 
 - Removed containers that are no longer top level containers: glance, todo, frequent
